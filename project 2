@@ -1,0 +1,56 @@
+#!/usr/bin/python
+import commands,time,webbrowser,bs4,requests
+
+
+
+menu='''
+press 1 for date and time
+press 2 for to scan all ther mac addresses in current network
+press 3 for shutdown your machine after 15 min
+press 4 something on google
+press 5 logout your current machine
+press 6 to shutdown all conected system in our current network
+press 7 to update status in facebook
+press 8 to get IPs of all sites
+'''
+print menu
+
+choice = raw_input()
+
+if choice =='1':
+
+	print "current date and time is:",time.ctime()#gives the current time
+
+elif choice =='2':
+
+	print "MAC address in current network:"
+	mac=commands.getoutput(' arp -a | cut -d "t" -f2 | cut -d "[" -f1 ')#to find connected systems
+	print mac
+
+elif choice =='3': 
+
+	print "shutting down pc after 15 min:"
+	commands.getoutput('sudo shutdown -P 15')#shuts don the pc after 15 min from current working time
+
+
+elif choice =='4':
+
+	find=raw_input("enter what do you want to search")
+	webbrowser.open_new_tab("http://www.google.com/search?q="+find)#goes to google .com to enable search
+
+elif choice =='5':
+
+	print "logging off current machine:"
+	time.sleep(3)
+	commands.getoutput('logout')
+
+elif choice=='8':
+	uls=raw_input("enter website")
+	print "ip of the site is"
+	
+	
+
+else:		
+	print "wrong option"
+
+	
